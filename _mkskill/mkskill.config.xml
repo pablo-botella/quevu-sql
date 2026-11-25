@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mkskill>
+  <version-spec params="major:byte,minor:[0-99],build:word">
+    <version major="0" minor="0" build="1" lock="major">
+      <ts></ts>
+    </version>
+    <label key="title" volatile="true" default-to-ts="true"></label>
+    <create file="__publish.bat" git-ignore="true" eol="crlf">
+@echo off
+set TAG={$$$ version $$$}
+git rev-parse -q --verify refs/tags/%TAG% &gt;NUL 2&gt;&amp;1 &amp;&amp; goto :exists
+git ls-remote --exit-code --tags origin %TAG% &gt;NUL 2&gt;&amp;1 &amp;&amp; goto :exists
+git tag %TAG%
+git push origin main --tags
+exit /b 0
+:exists
+echo ERROR: tag %TAG% already exists - run -vinc first
+exit /b 1
+</create>
+  </version-spec>
+  <project id="main" name="quevu-sql" project-type="Go-Module">
+    <meta>
+      <module>github.com/pablo-botella/quevu-sql</module>
+      <license>MIT</license>
+      <description>SQL stores for quevu in Go, on dbh: one module with a common package (the table, writing batches, reading by position, a stored-data provider and a history aggregator) and one package per database that holds its driver (SQLite, MySQL; PostgreSQL to come). Each gives a persistent writer and a provider usable as immediate or historical. Use when working with github.com/pablo-botella/quevu-sql and its packages qsql, qsqlite, qmysql.</description>
+    </meta>
+  </project>
+  <version-history max="10"></version-history>
+</mkskill>

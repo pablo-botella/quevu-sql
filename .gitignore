@@ -1,0 +1,6 @@
+*.exe
+*.test
+*.out
+.claude
+__publish.bat
+__test-mysql.bat
