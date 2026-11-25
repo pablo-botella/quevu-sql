@@ -17,6 +17,11 @@ packages:
 - `sqlite` (package `qsqlite`): the driver (`modernc.org/sqlite`) and how
   a SQLite file is opened; `rotate.go`: a database file per period
   (`Rotation`, `OpenRotating`, `NewCurrent`, `NewPeriods`).
+- `sqlitec` (package `qsqlitec`): the same store with the SQLite library
+  itself, in C (`github.com/mattn/go-sqlite3`, cgo). **Generated, never
+  edited by hand:** change `sqlite` and run `go generate ./...`; the
+  generator is `internal/gensqlitec`, and its test fails when `sqlitec`
+  is not what `sqlite` gives.
 - `mysql` (package `qmysql`): the driver (`github.com/go-sql-driver/mysql`)
   and how a server is reached.
 

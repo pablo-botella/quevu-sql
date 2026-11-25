@@ -15,7 +15,8 @@ imported, so an application gets only the driver it uses.
 | Package | Import path | What it is | State |
 |---|---|---|---|
 | `qsql` | `github.com/pablo-botella/quevu-sql` | What every store has in common. No driver | Tested |
-| `qsqlite` | `.../quevu-sql/sqlite` | SQLite | Tested |
+| `qsqlite` | `.../quevu-sql/sqlite` | SQLite, with a driver written in Go: no C compiler needed | Tested |
+| `qsqlitec` | `.../quevu-sql/sqlitec` | SQLite, with the SQLite library itself, in C: needs cgo | Tested |
 | `qmysql` | `.../quevu-sql/mysql` | MySQL | Tested against MySQL 8.0 |
 | `qpostgres` | `.../quevu-sql/postgres` | PostgreSQL | Not written yet |
 

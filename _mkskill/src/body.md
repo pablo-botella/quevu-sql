@@ -131,6 +131,30 @@ cut may lose the last ones without damaging the file); with it, every
 commit waits for the disk. A file or a table that does not exist yet is an
 empty log.
 
+### The same store, with SQLite in C (`qsqlitec`)
+
+```go
+import qsqlitec "github.com/pablo-botella/quevu-sql/sqlitec"
+
+store, _ := qsqlitec.Open("app.db", qsqlitec.Options{Table: "mailer"})
+```
+
+`qsqlitec` is `qsqlite` with another driver: the SQLite library itself,
+in C, instead of its translation to Go. Everything else is the same, name
+by name, and the two read and write the same files, so changing from one
+to the other is changing the import.
+
+| | `qsqlite` | `qsqlitec` |
+|---|---|---|
+| Driver | `modernc.org/sqlite`, in Go | `github.com/mattn/go-sqlite3`, in C |
+| To build | Nothing but Go | cgo and a C compiler |
+| Cross compilation | As any Go program | Needs a C compiler for the target |
+| Size it adds to a program, without debug information | About 5 MB | About 3 MB |
+
+Take `qsqlitec` when the program is built with cgo anyway, and `qsqlite`
+when it must build with Go alone. Without cgo `qsqlitec` does not build,
+instead of building a program that cannot open a database.
+
 ### A file per period
 
 ```go
