@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mkskill>
   <version-spec params="major:byte,minor:[0-99],build:word">
-    <version major="0" minor="0" build="1" lock="major">
-      <ts></ts>
+    <version major="0" minor="0" build="2" lock="major">
+      <ts>2026-11-25T20:39:09Z</ts>
     </version>
-    <label key="title" volatile="true" default-to-ts="true"></label>
+    <label key="title" volatile="true" default-to-ts="true">2026-11-25T20:39:09Z</label>
     <create file="__publish.bat" git-ignore="true" eol="crlf">
 @echo off
 set TAG={$$$ version $$$}
@@ -25,5 +25,6 @@ exit /b 1
       <description>SQL stores for quevu in Go, on dbh: one module with a common package (the table, writing batches, reading by position, a stored-data provider and a history aggregator) and one package per database that holds its driver (SQLite, MySQL; PostgreSQL to come). Each gives a persistent writer and a provider usable as immediate or historical. Use when working with github.com/pablo-botella/quevu-sql and its packages qsql, qsqlite, qmysql.</description>
     </meta>
   </project>
-  <version-history max="10"></version-history>
+  <version-history max="10">
+    <release version="v0.0.2" ts="2026-11-25T20:39:09Z" title="2026-11-25T20:39:09Z" method="vinc-build"></release></version-history>
 </mkskill>
